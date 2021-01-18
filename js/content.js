@@ -7,5 +7,8 @@ chrome.runtime.onMessage.addListener((message) => {
 });
 
 function copyCode() {
-    console.debug("Copying!")
+    const newClip = Array.from(document.querySelectorAll(".blob-code.blob-code-inner.js-file-line"))
+        .map(_ => _.textContent)
+        .join("\n")
+    navigator.clipboard.writeText(newClip)
 }
